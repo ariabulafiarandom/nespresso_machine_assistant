@@ -1,3 +1,4 @@
+import os
 import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -9,26 +10,21 @@ from openai import OpenAI
 
 threads = {}  # Global variable to store thread IDs
 
-api_key  = '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'
-client = OpenAI(api_key=api_key)
-
-assistant_id = "asst_CTYIv05kje126cYg9BUuwfm1"
-
 app = Flask(__name__)
 app.secret_key = secrets.token_urlsafe(16)
 CORS(app)
 
 # OpenAI setup
-api_key = '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'
+api_key = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=api_key)
-assistant_id = "asst_CTYIv05kje126cYg9BUuwfm1"
+assistant_id = os.environ['OPENAI_ASSISTANT_ID'] 
 
 # Database connection
 def get_db_connection():
     conn = psycopg2.connect(
-        host='localhost',
-        database='prod',
-        user='arsenieciobanu'
+        host=os.environ['DB_HOST'],
+        database=os.environ['DB_DATABASE_NAME'],
+        user=os.environ['DB_USER'] 
     )
     return conn
 
