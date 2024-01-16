@@ -1,6 +1,8 @@
 # Use the official Python image as the base image
 FROM python:3.9.12
 
+# Set the working directory
+WORKDIR /app
 
 # Copy the requirements file into the container
 COPY requirements.txt .
@@ -15,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # Start the Flask app
-CMD ["python", "App.py"]
+CMD ["python", "src/App.py"]
