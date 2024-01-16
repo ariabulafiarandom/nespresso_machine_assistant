@@ -1,8 +1,6 @@
 # Use the official Python image as the base image
 FROM python:3.9.12
 
-# Set the working directory
-WORKDIR .
 
 # Copy the requirements file into the container
 COPY requirements.txt .
