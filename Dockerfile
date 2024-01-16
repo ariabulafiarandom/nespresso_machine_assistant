@@ -2,7 +2,7 @@
 FROM python:3.9.12
 
 # Set the working directory
-WORKDIR /src
+WORKDIR .
 
 # Copy the requirements file into the container
 COPY requirements.txt .
